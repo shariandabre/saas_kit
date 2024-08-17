@@ -75,6 +75,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
         "background-shine": {
           from: {
             backgroundPosition: "0 0",
@@ -140,6 +144,7 @@ const config: Config = {
         },
       },
       animation: {
+        'caret-blink': 'caret-blink 1.25s ease-out infinite',
         "logo-cloud": "logo-cloud 30s linear infinite", // Adjust duration and timing as needed for your design.
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
         gradient: "gradient 8s linear infinite",
@@ -156,7 +161,7 @@ const config: Config = {
   plugins: [
     require("tailwindcss-animate"), // Assuming require is resolved in your environment
     // Add other unique plugins here
-    function ({ matchUtilities, theme }: any) {
+    function({ matchUtilities, theme }: any) {
       matchUtilities(
         {
           "bg-grid": (value: any) => ({
